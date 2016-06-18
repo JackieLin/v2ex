@@ -1,0 +1,346 @@
+@charset "UTF-8";
+/**
+ * v2ex 应用
+ * @author jackieLin <dashi_lin@163.com>
+ */
+@import '//at.alicdn.com/t/font_1465179476_9556372.css';
+html, body {
+  height: 100%;
+  background: #f2f3f5; }
+
+/**
+ * 基本类
+ * @author jackieLin <dashi_lin@163.com>
+ */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+ * 公共方法
+ * @author jackieLin <dashi_lin@163.com>
+ */
+/**
+ * 公共变量
+ * @author jackieLin <dashi_lin@163.com>
+ */
+/**
+ * mixin 信息
+ * @author jackieLin <dashi_lin@163.com>
+ */
+/**
+ * @see https://github.com/driftyco/ionic/blob/2a48709263e96dd344ba1768427f6f0eae9c9d76/scss/_mixins.scss#L488
+ * @author jackieLin <dashi_lin@163.com>
+ */
+/**
+ * 头部
+ * @author jackie Lin <dashi_lin@163.com>
+ */
+.header {
+  font-size: 0.55467rem;
+  color: #0f0f0f;
+  text-align: center;
+  position: relative;
+  height: 1.792rem;
+  line-height: 1.792rem;
+  background: #f6f6f7;
+  border-bottom: 2px solid #c0c0c0;
+  border-image: linear-gradient(to bottom, #c0c0c0, #f1f1f1) 1 50% 100%; }
+  .header .iconfont {
+    position: absolute;
+    font-size: 0.768rem;
+    color: #666; }
+  .header .icon-list {
+    left: 0.64rem; }
+  .header .icon-diandiandian {
+    right: 0.64rem; }
+
+/**
+ * 公共代码片段
+ * @author jakcieLin <dashi_lin@163.com>
+ */
+/**
+ * 列表页面
+ * @author jackieLin <dashi_lin@163.com>
+ */
+.spread-left .main {
+  -webkit-transform: translate3d(9.81333rem, 0, 0);
+  transform: translate3d(9.81333rem, 0, 0);
+  transition: all .25s ease-in;
+  box-shadow: -2px -2px 20px 1px rgba(0, 0, 0, 0.2); }
+
+.spread-left .node-list {
+  display: none; }
+
+.spread-right .main {
+  -webkit-transform: translate3d(-4.69333rem, 0, 0);
+  transform: translate3d(-4.69333rem, 0, 0);
+  transition: all .25s ease-in;
+  box-shadow: 2px 0 20px 1px rgba(0, 0, 0, 0.2); }
+
+.spread-right .user-center {
+  display: none; }
+
+.main-wrapper {
+  overflow: hidden;
+  height: 100%;
+  background: url("../images/bg.jpg");
+  background-size: cover;
+  position: relative; }
+  .main-wrapper .main {
+    width: 100%;
+    height: 100%;
+    background: #f2f3f5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; }
+
+.user-center {
+  width: 9.81333rem;
+  float: left; }
+  .user-center .favicon {
+    margin: 0 auto;
+    width: 4.26667rem;
+    text-align: center;
+    margin-top: 1.024rem;
+    font-size: 0.64rem;
+    color: #353535; }
+    .user-center .favicon img {
+      background: #f2f3f5;
+      width: 3.15733rem;
+      height: 3.15733rem;
+      border-radius: 100%;
+      border: 1px solid #f5f5ea; }
+    .user-center .favicon p {
+      margin-top: 0.512rem; }
+  .user-center ul {
+    font-size: 0.64rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 1.28rem; }
+    .user-center ul li {
+      padding-left: 0.93867rem;
+      height: 2.34667rem;
+      line-height: 2.34667rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid #353332; }
+      .user-center ul li:nth-of-type(3) {
+        margin-bottom: 0.42667rem; }
+      .user-center ul li i {
+        margin-right: 0.42667rem; }
+
+.article-list {
+  margin-top: -0.68267rem; }
+  .article-list .item {
+    background: #fff;
+    margin-top: 0.68267rem;
+    padding-left: 0.512rem;
+    padding-bottom: 0.55467rem; }
+  .article-list .message {
+    font-size: 0.55467rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0.42667rem; }
+    .article-list .message > img {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 1.49333rem;
+      -moz-box-flex: 0;
+      -moz-flex: 0 0 1.49333rem;
+      -ms-flex: 0 0 1.49333rem;
+      flex: 0 0 1.49333rem;
+      height: 1.49333rem;
+      border-radius: 4px;
+      background: #000;
+      margin-right: 0.42667rem; }
+    .article-list .message .user {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0;
+      -moz-box-flex: 1;
+      -moz-flex: 1 0;
+      -ms-flex: 1 0;
+      flex: 1 0;
+      color: #353535; }
+      .article-list .message .user p {
+        margin-bottom: 0.256rem; }
+      .article-list .message .user span {
+        font-size: 0.512rem;
+        color: #adadad; }
+    .article-list .message .comment {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 1 auto;
+      -moz-box-flex: 0;
+      -moz-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      margin-right: 0.59733rem;
+      color: #b1b1b1; }
+      .article-list .message .comment .text {
+        background: #f2f2f2;
+        display: inline-block;
+        vertical-align: middle;
+        height: 0.85333rem;
+        line-height: 0.85333rem;
+        padding: 0 0.42667rem 0 0.42667rem;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 0.42667rem; }
+      .article-list .message .comment span, .article-list .message .comment i {
+        vertical-align: middle; }
+  .article-list .title {
+    margin-top: 0.59733rem;
+    font-size: 0.72533rem;
+    color: #0f0f0f; }
+
+.node-list {
+  text-align: right; }
+  .node-list ul {
+    font-size: 0.64rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 1.28rem; }
+    .node-list ul li {
+      padding-left: 0.93867rem;
+      height: 2.34667rem;
+      line-height: 2.34667rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid #353332; }
+      .node-list ul li:nth-of-type(3) {
+        margin-bottom: 0.42667rem; }
+      .node-list ul li i {
+        margin-right: 0.42667rem; }
+  .node-list li {
+    padding-right: 0.42667rem; }
+
+/**
+ * 帖子详情页面
+ * @author jackieLin <dashi_lin@163.com>
+ */
+.article-detail {
+  background: #fff; }
+  .article-detail .user-detail {
+    padding-bottom: 0.768rem;
+    padding-left: 0.42667rem;
+    background: #fff;
+    border-bottom: 1px solid #f2f3f5; }
+    .article-detail .user-detail .message {
+      font-size: 0.55467rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding-top: 0.42667rem; }
+      .article-detail .user-detail .message > img {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 1.49333rem;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 1.49333rem;
+        -ms-flex: 0 0 1.49333rem;
+        flex: 0 0 1.49333rem;
+        height: 1.49333rem;
+        border-radius: 4px;
+        background: #000;
+        margin-right: 0.42667rem; }
+      .article-detail .user-detail .message .user {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 0;
+        -moz-box-flex: 1;
+        -moz-flex: 1 0;
+        -ms-flex: 1 0;
+        flex: 1 0;
+        color: #353535; }
+        .article-detail .user-detail .message .user p {
+          margin-bottom: 0.256rem; }
+        .article-detail .user-detail .message .user span {
+          font-size: 0.512rem;
+          color: #adadad; }
+      .article-detail .user-detail .message .comment {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 auto;
+        -moz-box-flex: 0;
+        -moz-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        margin-right: 0.59733rem;
+        color: #b1b1b1; }
+        .article-detail .user-detail .message .comment .text {
+          background: #f2f2f2;
+          display: inline-block;
+          vertical-align: middle;
+          height: 0.85333rem;
+          line-height: 0.85333rem;
+          padding: 0 0.42667rem 0 0.42667rem;
+          text-align: center;
+          border-radius: 4px;
+          font-size: 0.42667rem; }
+        .article-detail .user-detail .message .comment span, .article-detail .user-detail .message .comment i {
+          vertical-align: middle; }
+    .article-detail .user-detail .title {
+      font-size: 0.64rem;
+      margin-top: 0.59733rem;
+      color: #0f0f0f; }
+  .article-detail .comment .user-detail {
+    padding-bottom: 0.64rem; }
+  .article-detail .content {
+    margin-top: 0.64rem;
+    line-height: 2;
+    font-size: 0.512rem;
+    padding-bottom: 0.64rem;
+    border-bottom: 1px solid #f2f3f5;
+    padding-left: 0.42667rem; }
+  .article-detail .postscriptum {
+    margin-left: 0.17067rem; }
+    .article-detail .postscriptum span {
+      display: inline-block;
+      font-size: 0.42667rem;
+      color: #b2b2b2;
+      margin-top: 0.17067rem; }
+  .article-detail .reply {
+    margin-top: 0.42667rem; }

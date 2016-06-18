@@ -1,0 +1,74 @@
+/**
+ * 公共代码片段
+ * @author jakcieLin <dashi_lin@163.com>
+ */
+@mixin lists {
+    ul {
+        font-size: rem(15);
+        color: rgba(0, 0, 0, .8);
+        margin-top: rem(30);
+        li {
+            padding-left: rem(22);
+            height: rem(55);
+            line-height: rem(55);
+            background: rgba(255, 255, 255,.2);
+            border-bottom: 1px solid #353332;
+
+            &:nth-of-type(3) {
+                margin-bottom: rem(10);
+            }
+
+            i {
+                margin-right: rem(10);
+            }
+        }
+    }
+}
+
+@mixin user-message {
+    font-size: rem(13);
+    @include display-flex;
+    padding-top: rem(10);
+    > img {
+        @include flex(0, 0, rem(35));
+        height: rem(35);
+        border-radius: 4px;
+        background: #000;
+        margin-right: rem(10);
+    }
+
+    .user {
+        @include flex(1, 0);
+        color: #353535;
+        
+        p {
+            margin-bottom: rem(6);
+        }
+
+        span {
+            font-size: rem(12);
+            color: #adadad;
+        }
+    }
+
+    .comment {
+        @include flex(0, 1, auto);
+        margin-right: rem(14);
+        color: #b1b1b1;
+        .text {
+            background: #f2f2f2;
+            display: inline-block;
+            vertical-align: middle;
+            height: rem(20);
+            line-height: rem(20);
+            padding: 0 rem(10) 0 rem(10);
+            text-align: center;
+            border-radius: 4px;
+            font-size: rem(10);
+        }
+
+        span, i {
+            vertical-align: middle;
+        }
+    }
+}

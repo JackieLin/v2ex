@@ -1,0 +1,15 @@
+/**
+ * v2ex 应用
+ * @author jackieLin <dashi_lin@163.com>
+ */
+html, body {
+    height: 100%;
+    background: #f2f3f5;
+}
+
+@import '//at.alicdn.com/t/font_1465179476_9556372.css';
+@import './common/base';
+@import './compoent/header';
+@import './pages/mixin';
+@import './pages/list';
+@import './pages/detail';

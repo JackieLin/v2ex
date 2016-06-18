@@ -1,0 +1,8 @@
+/**
+ * 公共方法
+ * @author jackieLin <dashi_lin@163.com>
+ */
+
+@function rem($n) {
+  @return unquote( ($n/(375/16)) + 'rem' ); 
+}

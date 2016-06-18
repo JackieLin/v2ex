@@ -1,0 +1,50 @@
+/**
+ * 帖子详情页面
+ * @author jackieLin <dashi_lin@163.com>
+ */
+.article-detail {
+    background: #fff;
+    .user-detail {
+        padding-bottom: rem(18);
+        padding-left: rem(10);
+        background: #fff;
+        border-bottom: 1px solid #f2f3f5;
+        .message {
+            @include user-message;
+        }
+
+        .title {
+            font-size: rem(15);
+            margin-top: rem(14);
+            color: #0f0f0f;
+        }
+    }
+
+    .comment .user-detail {
+        padding-bottom: rem(15);
+    }
+
+    .content {
+        margin-top: rem(15);
+        line-height: 2;
+        font-size: rem(12);
+        padding-bottom: rem(15);
+        border-bottom: 1px solid #f2f3f5;
+        padding-left: rem(10);
+    }
+    
+    // 附言
+    .postscriptum {
+        margin-left: rem(4);
+        span {
+            display: inline-block;
+            font-size: rem(10);
+            color: #b2b2b2;
+            margin-top: rem(4);
+        }
+    }
+
+    .reply {
+        margin-top: rem(10);
+    }
+}

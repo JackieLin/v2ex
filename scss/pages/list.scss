@@ -1,0 +1,104 @@
+/**
+ * 列表页面
+ * @author jackieLin <dashi_lin@163.com>
+ */
+.spread-left {
+    .main {
+        -webkit-transform: translate3d(rem(230), 0, 0);
+        transform: translate3d(rem(230), 0, 0);
+        transition: all .25s ease-in;
+        box-shadow: -2px -2px 20px 1px rgba(0, 0, 0, 0.2)
+    }
+
+    .node-list {
+        display: none;
+    }
+}
+
+.spread-right {
+    .main {
+        -webkit-transform: translate3d(rem(-110), 0, 0);
+        transform: translate3d(rem(-110), 0, 0);
+        transition: all .25s ease-in;
+        box-shadow: 2px 0 20px 1px rgba(0, 0, 0, 0.2)
+    }
+
+    .user-center {
+        display: none;
+    }
+}
+
+.main-wrapper {
+    overflow: hidden;
+    height: 100%;
+    background: url($image-path + 'bg.jpg');
+    background-size: cover;
+    position: relative;
+    .main {
+        width: 100%;
+        height: 100%;
+        background: #f2f3f5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+
+// 用户个人中心
+.user-center {
+    width: rem(230);
+    float: left;
+    .favicon {
+        margin: 0 auto;
+        width: rem(100);
+        text-align: center;
+        margin-top: rem(24);
+        font-size: rem(15);
+        color: #353535;
+
+        img {
+            background: #f2f3f5;
+            width: rem(74);
+            height: rem(74);
+            border-radius: 100%;
+            border: 1px solid #f5f5ea;
+        }
+
+        p {
+            margin-top: rem(12);
+        }
+    }
+
+    @include lists;
+}
+
+// 文章列表
+.article-list {
+    margin-top: rem(-16);
+    .item {
+        background: #fff;
+        margin-top: rem(16);
+        padding-left: rem(12);
+        padding-bottom: rem(13);
+    }
+
+    .message {
+        @include user-message;
+    }
+
+    .title {
+        margin-top: rem(14);
+        font-size: rem(17);
+        color: #0f0f0f;
+    }
+}
+
+// 节点列表
+.node-list {
+    @include lists;
+    text-align: right;
+    li {
+        padding-right: rem(10);
+    }
+}
