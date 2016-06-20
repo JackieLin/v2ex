@@ -12,9 +12,11 @@ const list = (state = {}, action) => {
   
   switch (action.type) {
     case 'fetching':
-        return state;
+        return Object.assign({}, state, {isFetching: true});
     case 'success':
-        return Object.assign({}, state, data);
+        return Object.assign({}, state, data, {isFetching: false});
+    case 'failure':
+        return Object.assign({}, state, {isFetching: false});
     default:
         return state;
   }

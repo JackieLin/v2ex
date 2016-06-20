@@ -95,6 +95,14 @@ const scrollSpinner = {
     marginVertical: 20
 };
 
+const noMore = {
+    height: 40,
+    lineHeight: 30,
+    textAlign: 'center',
+    color: '#adadad',
+    fontSize: 12
+};
+
 export default {
     li: li,
     userMessage: userMessage,
@@ -110,5 +118,6 @@ export default {
     num: num,
     text: text,
     scrollSpinner: scrollSpinner,
-    postdivider: postdivider
+    postdivider: postdivider,
+    noMore: noMore
 };

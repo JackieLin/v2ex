@@ -18,6 +18,7 @@ import {
   Platform,
   Text,
   ListView,
+  RefreshControl,
   Image,
   View
 } from 'react-native';
@@ -70,7 +71,8 @@ class App extends Component {
      */
     renderFooter() {
       if (Platform.OS === 'ios') {
-        return <ActivityIndicatorIOS style={articleListStyles.scrollSpinner} />;
+        // return <ActivityIndicatorIOS style={articleListStyles.scrollSpinner} />;
+        return <Text style={articleListStyles.noMore}>没有更多数据了 (*^ω^*)</Text>
       } else {
         return (
           <View style={{alignItems: 'center'}}>
@@ -113,19 +115,33 @@ class App extends Component {
         />
       );
     }
+    
+    _onRefresh() {
+      // 重新刷新代码
+      const {dispatch} = this.props;
+      dispatch(getLastTopics());
+    }
 
     render() {
-        let {posts} = this.props;
+        let {posts, isFetching} = this.props;
         
         this.getDataSource(posts);
         
         var content = this.postListView.getRowCount() === 0 ?
           <View /> :
-          <ListView ref="post" 
+          <ListView ref="post"
+          refreshControl={
+            <RefreshControl
+              refreshing={isFetching}
+              onRefresh={this._onRefresh.bind(this)}
+              title={'下拉刷新'}
+              tintColor='#ccc'
+            />
+          }
           dataSource={this.postListView} 
           renderRow={this.renderRow.bind(this)} 
           renderFooter={this.renderFooter} 
-          onEndReached={this.onEndReached} 
+          onEndReached={this.onEndReached}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps={true}
@@ -150,11 +166,10 @@ App.propTypes = {
 }
 
 function mapStateToProps(state) {
-  const { articleList, isFetching = false } = state;
+  const { articleList, isFetching } = state;
   const {
     items: posts
   } = articleList;
-  
   return {
     posts,
     isFetching

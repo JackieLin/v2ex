@@ -52,7 +52,7 @@ class PostMessage extends Component {
                       <TimeAgo style={articleListStyles.time} time={post.last_modified} />
                   </View>
 
-                  {commentView}                
+                  {commentView}
               </View>
 
                 <Text style={articleListStyles.text}>{post.title}</Text>

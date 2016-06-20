@@ -34,6 +34,7 @@ var styles = StyleSheet.create({
 
 class v2ex extends Component {
   render() {
+    // console.warn(JSON.stringify(store.getState()));
     return (
       <Provider store={store}>
         <NavigatorIOS 
