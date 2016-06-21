@@ -19,7 +19,6 @@ import {
   Text,
   ListView,
   RefreshControl,
-  Image,
   View
 } from 'react-native';
 
@@ -147,7 +146,7 @@ class App extends Component {
           keyboardShouldPersistTaps={true}
           showsVerticalScrollIndicator={false}
         />;
-
+        
         return (
             <View style={containerStyles.container}>
               <View style={containerStyles.main}>

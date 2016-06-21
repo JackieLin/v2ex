@@ -39,21 +39,21 @@ class PostMessage extends Component {
         return (
             <View>
                 <View style={articleListStyles.userMessage}>
-                  <View style={articleListStyles.favicon}>
-                    <Image
-                      style={articleListStyles.faviconImage}
-                      source={{uri: 'http:' + post.member.avatar_normal}}
-                      resizeMode={'stretch'}
-                    />
-                  </View>
+                    <View style={articleListStyles.favicon}>
+                      <Image
+                        style={articleListStyles.faviconImage}
+                        source={{uri: 'http:' + post.member.avatar_normal}}
+                        resizeMode={'stretch'}
+                      />
+                    </View>
 
-                  <View style={articleListStyles.reply}>
-                      <Text style={articleListStyles.userName}>{post.member.username}</Text>
-                      <TimeAgo style={articleListStyles.time} time={post.last_modified} />
-                  </View>
+                    <View style={articleListStyles.reply}>
+                        <Text style={articleListStyles.userName}>{post.member.username}</Text>
+                        <TimeAgo style={articleListStyles.time} time={post.last_modified} />
+                    </View>
 
-                  {commentView}
-              </View>
+                    {commentView}
+                </View>
 
                 <Text style={articleListStyles.text}>{post.title}</Text>
             </View>

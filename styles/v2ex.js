@@ -29,5 +29,5 @@ export default {
     flex: flex,
     header: header,
     articleList: articleList,
-    postDetail: postDetail
+    postDetail: postDetail,
 };
