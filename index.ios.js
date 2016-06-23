@@ -11,8 +11,10 @@ import App from './compoents/app';
 import {
   AppRegistry,
   StyleSheet,
+  Text,
   Image,
-  Navigator
+  Navigator,
+  TouchableOpacity
 } from 'react-native';
 
 // 内嵌 redux
@@ -48,18 +50,11 @@ var styles = StyleSheet.create({
 
 var NavigationBarRouteMapper = {
   LeftButton: function(route, navigator, index, navState) {
-    if (index === 0) {
-      return null;
-    }
-
-    var previousRoute = navState.routeStack[index - 1];
     return (
       <TouchableOpacity
         onPress={() => navigator.pop()}
-        style={styles.navBarLeftButton}>
-        <Text style={[styles.navBarText, styles.navBarButtonText]}>
-          {previousRoute.title}
-        </Text>
+        style={{width: 100, height: 60}}>
+        <Image source={require('./images/menu.png')} style={{position: 'absolute', top: 15, left: 10, height: 18, width: 27}}/>
       </TouchableOpacity>
     );
   },
@@ -68,18 +63,16 @@ var NavigationBarRouteMapper = {
     return (
       <TouchableOpacity
         onPress={() => navigator.push(newRandomRoute())}
-        style={styles.navBarRightButton}>
-        <Text style={[styles.navBarText, styles.navBarButtonText]}>
-          Next
-        </Text>
+        style={{width: 100, height: 60}}>
+        <Image source={require('./images/more.png')} style={{position: 'absolute', top: 15, right: 10, height: 18, width: 27}}/>
       </TouchableOpacity>
     );
   },
 
-  Title: function(route, navigator, index, navState) {
+  Title: function(router, navigator, index, navState) {
     return (
-      <Text style={[styles.navBarText, styles.navBarTitleText]}>
-        {route.title} [{index}]
+      <Text style={{lineHeight: 32, fontSize: 15}}>
+        {router.title}
       </Text>
     );
   },
@@ -107,13 +100,12 @@ class v2ex extends Component {
           style={styles.bg}>
               <Navigator
                 debugOverlay={false}
-                style={styles.container}
-                initialRoute={{ route: '/' }}
+                initialRoute={{ route: '/', title: 'V2EX' }}
                 renderScene={this.renderScene}
                 navigationBar={
                   <Navigator.NavigationBar
                     routeMapper={NavigationBarRouteMapper}
-                    style={{backgroundColor: 'white'}}
+                    style={{backgroundColor: 'white', flexDirection: 'row'}}
                   />
                 }
               />
