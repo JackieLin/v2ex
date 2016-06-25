@@ -17,6 +17,32 @@ import {
   Animated
 } from 'react-native';
 
+const style = {
+  menu: {
+    position: 'absolute',
+    top: 15,
+    left: 10,
+    height: 18,
+    width: 27
+  },
+  more: {
+    position: 'absolute',
+    top: 15,
+    right: 10,
+    height: 18,
+    width: 27
+  },
+  navigator: {
+    backgroundColor: 'white',
+    flexDirection: 'row'
+  },
+
+  title: {
+    lineHeight: 32,
+    fontSize: 15
+  }
+};
+
 class Route extends Component {
     constructor() {
       super();
@@ -72,7 +98,7 @@ class Route extends Component {
             <TouchableOpacity
               onPress={leftNav.bind(self, 'shadowLeft')}
               style={{width: 100, height: 60}}>
-              <Image source={require('../images/menu.png')} style={{position: 'absolute', top: 15, left: 10, height: 18, width: 27}}/>
+              <Image source={require('../images/menu.png')} style={style.menu}/>
             </TouchableOpacity>
           );
         },
@@ -83,14 +109,14 @@ class Route extends Component {
             <TouchableOpacity
               onPress={rightNav.bind(self, 'shadowRight')}
               style={{width: 100, height: 60}}>
-              <Image source={require('../images/more.png')} style={{position: 'absolute', top: 15, right: 10, height: 18, width: 27}}/>
+              <Image source={require('../images/more.png')} style={style.more}/>
             </TouchableOpacity>
           );
         },
 
         Title: function(router, navigator, index, navState) {
           return (
-            <Text style={{lineHeight: 32, fontSize: 15}}>
+            <Text style={style.title}>
               {router.title}
             </Text>
           );
@@ -109,7 +135,7 @@ class Route extends Component {
           navigationBar={
             <Navigator.NavigationBar
               routeMapper={this.routeMapper()}
-              style={{backgroundColor: 'white', flexDirection: 'row'}}
+              style={style.navigator}
             />
           }
         />
