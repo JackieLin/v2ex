@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import PostCell from './postCell';
 import {getLastTopics} from '../actions/v2ex';
 import v2exStyle from '../styles/v2ex';
-import dismissKeyboard from 'dismissKeyboard';
-import PostDetail from './postDetail';
 import {
   ActivityIndicatorIOS,
   TouchableHighlight,
@@ -18,7 +16,7 @@ import {
   Platform,
   Text,
   ListView,
-  Image,
+  RefreshControl,
   View
 } from 'react-native';
 
@@ -70,7 +68,8 @@ class App extends Component {
      */
     renderFooter() {
       if (Platform.OS === 'ios') {
-        return <ActivityIndicatorIOS style={articleListStyles.scrollSpinner} />;
+        // return <ActivityIndicatorIOS style={articleListStyles.scrollSpinner} />;
+        return <Text style={articleListStyles.noMore}>没有更多数据了 (*^ω^*)</Text>
       } else {
         return (
           <View style={{alignItems: 'center'}}>
@@ -81,20 +80,11 @@ class App extends Component {
     }
     
     selectPost(post) {
-      if (Platform.OS === 'ios') {
         this.props.navigator.push({
           title: '帖子详情',
-          component: PostDetail,
-          passProps: {post},
-        });
-      } else {
-        dismissKeyboard();
-        this.props.navigator.push({
-          title: '帖子详情',
-          name: 'PostDetail',
+          route: '/detail',
           post: post,
         });
-      }
     }
 
     renderRow(
@@ -113,25 +103,39 @@ class App extends Component {
         />
       );
     }
+    
+    _onRefresh() {
+      // 重新刷新代码
+      const {dispatch} = this.props;
+      dispatch(getLastTopics());
+    }
 
     render() {
-        let {posts} = this.props;
+        let {posts, isFetching} = this.props;
         
         this.getDataSource(posts);
         
         var content = this.postListView.getRowCount() === 0 ?
           <View /> :
-          <ListView ref="post" 
+          <ListView ref="post"
+          refreshControl={
+            <RefreshControl
+              refreshing={isFetching}
+              onRefresh={this._onRefresh.bind(this)}
+              title={'下拉刷新'}
+              tintColor='#ccc'
+            />
+          }
           dataSource={this.postListView} 
           renderRow={this.renderRow.bind(this)} 
           renderFooter={this.renderFooter} 
-          onEndReached={this.onEndReached} 
+          onEndReached={this.onEndReached}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps={true}
           showsVerticalScrollIndicator={false}
         />;
-
+        
         return (
             <View style={containerStyles.container}>
               <View style={containerStyles.main}>
@@ -146,15 +150,15 @@ class App extends Component {
 App.propTypes = {
   posts: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  navigator: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
-  const { articleList, isFetching = false } = state;
+  const { articleList, isFetching } = state;
   const {
     items: posts
   } = articleList;
-  
   return {
     posts,
     isFetching

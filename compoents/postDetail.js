@@ -32,7 +32,7 @@ class PostDetail extends Component {
     render() {
         const {post, comments} = this.props;
         return (
-            <ScrollView>
+            <ScrollView style={postStyles.container}>
                 <View style={postStyles.postMessage}>
                   <PostMessage post={post} showComment={false}/>
                 </View>
