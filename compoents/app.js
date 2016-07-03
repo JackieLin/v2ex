@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import PostCell from './postCell';
 import {getLastTopics} from '../actions/v2ex';
 import v2exStyle from '../styles/v2ex';
-import dismissKeyboard from 'dismissKeyboard';
-import PostDetail from './postDetail';
 import {
   ActivityIndicatorIOS,
   TouchableHighlight,
@@ -82,20 +80,11 @@ class App extends Component {
     }
     
     selectPost(post) {
-      if (Platform.OS === 'ios') {
         this.props.navigator.push({
           title: '帖子详情',
-          component: PostDetail,
-          passProps: {post},
-        });
-      } else {
-        dismissKeyboard();
-        this.props.navigator.push({
-          title: '帖子详情',
-          name: 'PostDetail',
+          route: '/detail',
           post: post,
         });
-      }
     }
 
     renderRow(
@@ -161,7 +150,8 @@ class App extends Component {
 App.propTypes = {
   posts: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  navigator: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

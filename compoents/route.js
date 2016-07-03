@@ -7,6 +7,9 @@
 
 import React, { Component, PropTypes} from 'react';
 import App from './app';
+import dismissKeyboard from 'dismissKeyboard';
+import PostDetail from './postDetail';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {
   Text,
@@ -23,7 +26,8 @@ const style = {
     top: 15,
     left: 10,
     height: 18,
-    width: 27
+    width: 80, 
+    flexDirection: 'row'
   },
   more: {
     position: 'absolute',
@@ -84,23 +88,60 @@ class Route extends Component {
       switch (router.route) {
         case '/':
           return <App navigator={nav}/>
+        case '/detail':
+          dismissKeyboard();
+          return <PostDetail navigator={nav} post={router.post}/>
         default:
           return <App navigator={nav}/>
       }
+    }
+    // <Image source={option.icon} style={{width:27, height: 18}}/>
+    showLeftIcon(option={}) {
+        return (
+          <TouchableOpacity
+            onPress={option.onPress}
+            style={{width: 100, height: 60}}>
+            <View style={style.menu}>
+              <Icon name={option.icon} size={20} color="#666"/>
+              <Text style={{color: '#666', fontSize: 15, marginLeft: 5}}>
+                  {option.title}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        );
+    }
+    /**
+     * 点击显示用户中心菜单
+     */
+    showMenu(route, navigator, index, navState) {
+        let leftNav = this.toggleLeftNav();
+        return this.showLeftIcon({
+          icon: 'bars',
+          onPress: leftNav.bind(this, 'shadowLeft')
+        });
+    }
+    
+    /**
+     * 显示返回按钮
+     */
+    showBack(route, navigator, index, navState) {
+        var previousRoute = navState.routeStack[index - 1];
+        return this.showLeftIcon({
+          icon: 'chevron-left',
+          onPress: () => navigator.pop(),
+          title: previousRoute.title
+        });      
     }
 
     routeMapper() {
       var self = this;
       var navigationBarRouteMapper = {
         LeftButton: function(route, navigator, index, navState) {
-          let leftNav = self.toggleLeftNav();
-          return (
-            <TouchableOpacity
-              onPress={leftNav.bind(self, 'shadowLeft')}
-              style={{width: 100, height: 60}}>
-              <Image source={require('../images/menu.png')} style={style.menu}/>
-            </TouchableOpacity>
-          );
+          if(index === 0) {
+            return self.showMenu();
+          } else {
+            return self.showBack(route, navigator, index, navState);
+          }
         },
 
         RightButton: function(route, navigator, index, navState) {
@@ -109,7 +150,7 @@ class Route extends Component {
             <TouchableOpacity
               onPress={rightNav.bind(self, 'shadowRight')}
               style={{width: 100, height: 60}}>
-              <Image source={require('../images/more.png')} style={style.more}/>
+              <Icon name='ellipsis-h' size={20} color="#666" style={style.more}/>
             </TouchableOpacity>
           );
         },

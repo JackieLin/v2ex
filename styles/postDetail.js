@@ -6,6 +6,7 @@
 
 export default {
     container: {
+        marginTop: 55,
         backgroundColor: '#fff'
     },
 

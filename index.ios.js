@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import { Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import UserCenter from './compoents/userCenter';
 import Nodes from './compoents/nodes';
 import Route from './compoents/route';
@@ -87,7 +86,7 @@ class v2ex extends Component {
               <Nodes />
               <Animated.View 
                 style={[styles.container, {transform: [{translateX: this.state.nav}]}, this.state.shadow]}>
-                <Route nav={this.state.nav}/>                  
+                <Route nav={this.state.nav}/>
               </Animated.View>
         </Image>
       </Provider>
