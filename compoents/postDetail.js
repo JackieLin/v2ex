@@ -9,6 +9,8 @@ import v2exStyle from '../styles/v2ex';
 import PostMessage from './postMessage';
 import CommentList from './commentList';
 import {getCommentsById} from '../actions/v2ex';
+import Markdown from '../compoents/markdown';
+
 import {
   ScrollView,
   StyleSheet,
@@ -38,7 +40,7 @@ class PostDetail extends Component {
                 </View>
                 <View style={postStyles.divider}></View>
                 <View style={[postStyles.postMessage, {marginBottom: 10}]}>
-                  <Text style={postStyles.content}>{post.content}</Text>
+                  <Markdown source={post.content}/>
                 </View>
 
                 <View style={postStyles.postscript}>
