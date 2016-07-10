@@ -41,3 +41,25 @@ export function getCommentsById(id) {
     },
   });
 };
+
+/**
+ * 获取所有节点数据
+ */
+export function getAllNodes(id) {
+  return dispatchApi({
+    [CALL_API]: {
+      types: [ 'fetching', 'success', 'failure', 'nodeList' ],
+      endpoint: '/nodes/all.json'
+    },
+  });
+};
+
+/**
+ * 修改 node id
+ */
+export function setNodeId(id) {
+  return dispatchApi({
+      type: 'nodeId',
+      id: id
+  });
+};

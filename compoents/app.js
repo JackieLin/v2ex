@@ -10,7 +10,6 @@ import {getLastTopics} from '../actions/v2ex';
 import v2exStyle from '../styles/v2ex';
 import {
   ActivityIndicatorIOS,
-  TouchableHighlight,
   ProgressBarAndroid,
   StyleSheet,
   Platform,
@@ -113,6 +112,7 @@ class App extends Component {
     render() {
         let {posts, isFetching} = this.props;
         
+        // console.warn(posts.length);
         this.getDataSource(posts);
         
         var content = this.postListView.getRowCount() === 0 ?

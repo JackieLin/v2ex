@@ -20,11 +20,16 @@ import {
 
 // 内嵌 redux
 const store = configureStore({
-  isFetching: true,
+  isFetching: false,
+  nodeId: -1,
   articleList: {
     items: []
   },
   commentList: {
+    items: []    
+  },
+  // 节点列表
+  nodeList: {
     items: []    
   }
 });
@@ -74,7 +79,7 @@ class v2ex extends Component {
       nav: new Animated.Value(0)
     };
   }
-
+  
   render() {
     // console.warn(JSON.stringify(store.getState()));
     return (

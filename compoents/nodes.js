@@ -4,10 +4,13 @@
  */
 'use strict';
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
 import styles from '../styles/nodes';
+import {getAllNodes, setNodeId} from '../actions/v2ex'
 
 import {
+  TouchableOpacity,
   StyleSheet,
   Text,
   View
@@ -16,18 +19,62 @@ import {
 const style = StyleSheet.create(styles);
 
 class Nodes extends Component {
+    componentDidMount(){
+        const {dispatch} = this.props;
+        dispatch(getAllNodes());
+    }
+    
+    onSelect(id) {
+        dispatch(setNodeId(id));
+    }
+
     render() {
+        const {nodes} = this.props;
+
         return (
             <View style={style.container}>
-                <View style={style.item}>
-                    <Text style={style.itemText}>Technology</Text>
-                </View>
-                <View style={style.item}>
-                    <Text style={style.itemText}>Play</Text>
-                </View>
+                {nodes.map((v) => {
+                    return (
+                        <TouchableOpacity key={v.id}
+                            onPress={() => { this.onSelect.bind(this, v.id)}}>
+                            <View style={style.item}>
+                                <Text style={style.itemText}>{v.title}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    );
+                })}
             </View>
         );
     }
 };
 
-export default Nodes;
+Nodes.propTypes = {
+  nodes: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired
+}
+
+function mapStateToProps(state) {
+  const { nodeList, isFetching } = state;
+  let {
+    items: nodes
+  } = nodeList;
+
+  nodes = nodes || [];
+
+  nodes.sort(function(a, b) {
+    return b.topics - a.topics;
+  });
+
+  nodes = nodes.slice(0, 9);
+  nodes.unshift({
+    id: -1,
+    title: '全部'
+  });
+  return {
+    nodes,
+    isFetching
+  }
+}
+
+export default connect(mapStateToProps)(Nodes);
