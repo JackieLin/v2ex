@@ -4,7 +4,7 @@
  */
 'use strict';
 // api 根目录
-const API_ROOT = 'http://www.v2ex.com/api';
+const API_ROOT = 'https://www.v2ex.com/api';
 
 const geneError = function(data, response={}) {
   const error = new Error(data);
@@ -17,7 +17,6 @@ const geneError = function(data, response={}) {
  */
 function ajax(url, config={}) {
   const fullUrl = (url.indexOf(API_ROOT) === -1) ? API_ROOT + url : url;
-  
   const dConfig = {
     method: 'GET'
   };
@@ -27,7 +26,7 @@ function ajax(url, config={}) {
   return fetch(fullUrl, init)
     .then(response =>
       response.json().then((data) => {
-          return {data, response};  
+          return {data, response};
         })
       ).then(({ data, response }) => {
         if (!response.ok) {
